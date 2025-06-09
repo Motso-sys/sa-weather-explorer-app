@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { WeatherCard } from '../components/WeatherCard';
 import { CityInput } from '../components/CityInput';
@@ -68,10 +69,10 @@ const Index = () => {
       <div className="relative z-10 flex flex-col items-center justify-start px-4 py-6 sm:py-8 min-h-screen">
         {/* Header */}
         <div className="text-center mb-6 sm:mb-8 animate-fade-in">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-2 sm:mb-4 drop-shadow-lg">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-3 sm:mb-5 drop-shadow-xl tracking-wide">
             🇿🇦 South Africa Weather
           </h1>
-          <p className="text-lg sm:text-xl text-white/90 drop-shadow px-2">
+          <p className="text-xl sm:text-2xl text-white/95 drop-shadow-lg px-2 font-medium tracking-wide">
             Get real-time weather for beautiful South African cities
           </p>
         </div>
@@ -88,10 +89,10 @@ const Index = () => {
           )}
           
           {!weatherData && !loading && (
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 text-center text-white">
-              <div className="text-5xl sm:text-6xl mb-4">🌤️</div>
-              <p className="text-base sm:text-lg">Enter a city to see the weather</p>
-              <p className="text-xs sm:text-sm opacity-75 mt-2">
+            <div className="bg-white/15 backdrop-blur-md rounded-2xl p-6 sm:p-8 text-center text-white shadow-xl border border-white/20">
+              <div className="text-6xl sm:text-7xl mb-5 filter drop-shadow-lg">🌤️</div>
+              <p className="text-lg sm:text-xl font-semibold tracking-wide">Enter a city to see the weather</p>
+              <p className="text-sm sm:text-base opacity-80 mt-3 font-medium tracking-wide">
                 Try: Cape Town, Johannesburg, Durban, Pretoria
               </p>
             </div>
@@ -99,8 +100,8 @@ const Index = () => {
         </div>
 
         {/* Footer */}
-        <div className="mt-8 sm:mt-12 text-center text-white/70 text-xs sm:text-sm px-4">
-          <p>Discover the weather across the Rainbow Nation</p>
+        <div className="mt-8 sm:mt-12 text-center text-white/80 text-sm sm:text-base px-4">
+          <p className="font-medium tracking-wide">Discover the weather across the Rainbow Nation</p>
         </div>
       </div>
     </div>

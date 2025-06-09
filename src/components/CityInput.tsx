@@ -28,47 +28,47 @@ export const CityInput: React.FC<CityInputProps> = ({ onSubmit, loading }) => {
   };
 
   return (
-    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/20">
+    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/20 shadow-lg">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="relative">
-          <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/70 h-4 w-4 sm:h-5 sm:w-5" />
+          <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-emerald-300 h-5 w-5 sm:h-6 sm:w-6" />
           <Input
             type="text"
             placeholder="Enter South African city..."
             value={city}
             onChange={(e) => setCity(e.target.value)}
-            className="pl-9 sm:pl-10 bg-white/90 border-white/30 text-gray-800 placeholder:text-gray-500 focus:ring-2 focus:ring-white/50 transition-all duration-200 text-sm sm:text-base h-10 sm:h-11"
+            className="pl-10 sm:pl-12 bg-white/95 border-white/40 text-gray-800 placeholder:text-gray-600 focus:ring-2 focus:ring-cyan-400/50 transition-all duration-200 text-base sm:text-lg h-12 sm:h-14 font-medium shadow-inner"
           />
         </div>
         
         <Button 
           type="submit" 
           disabled={loading}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 sm:py-3 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:scale-100 text-sm sm:text-base h-auto"
+          className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 sm:py-4 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:scale-100 text-base sm:text-lg h-auto shadow-lg"
         >
           {loading ? (
             <div className="flex items-center justify-center space-x-2">
-              <div className="animate-spin rounded-full h-3 w-3 sm:h-4 sm:w-4 border-2 border-white border-t-transparent"></div>
-              <span>Getting Weather...</span>
+              <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-2 border-white border-t-transparent"></div>
+              <span className="font-semibold tracking-wide">Getting Weather...</span>
             </div>
           ) : (
             <div className="flex items-center justify-center space-x-2">
-              <Search className="h-3 w-3 sm:h-4 sm:w-4" />
-              <span>Get Weather</span>
+              <Search className="h-4 w-4 sm:h-5 sm:w-5" />
+              <span className="font-semibold tracking-wide">Get Weather</span>
             </div>
           )}
         </Button>
       </form>
 
       {/* Popular Cities */}
-      <div className="mt-4 sm:mt-6">
-        <p className="text-white/70 text-xs sm:text-sm mb-2 sm:mb-3 text-center">Popular cities:</p>
+      <div className="mt-5 sm:mt-6">
+        <p className="text-white/90 text-sm sm:text-base mb-3 text-center font-medium tracking-wide">Popular cities:</p>
         <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:justify-center">
           {popularCities.slice(0, 4).map((popularCity) => (
             <button
               key={popularCity}
               onClick={() => handleCityClick(popularCity)}
-              className="px-2 sm:px-3 py-1 bg-white/20 hover:bg-white/30 text-white text-xs rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95 disabled:opacity-50 min-h-[28px] sm:min-h-[32px] flex items-center justify-center"
+              className="px-3 sm:px-4 py-2 bg-white/25 hover:bg-white/35 text-white text-sm sm:text-base rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95 disabled:opacity-50 min-h-[32px] sm:min-h-[36px] flex items-center justify-center font-medium shadow-md hover:shadow-lg"
               disabled={loading}
             >
               {popularCity}
