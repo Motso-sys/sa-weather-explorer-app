@@ -1,7 +1,7 @@
-
 import React, { useState } from 'react';
 import { WeatherCard } from '../components/WeatherCard';
 import { CityInput } from '../components/CityInput';
+import { DateTime } from '../components/DateTime';
 import { useToast } from '../hooks/use-toast';
 
 const Index = () => {
@@ -78,6 +78,7 @@ const Index = () => {
 
         {/* Weather App Container */}
         <div className="w-full max-w-sm sm:max-w-md space-y-4 sm:space-y-6">
+          <DateTime />
           <CityInput onSubmit={handleWeatherFetch} loading={loading} />
           
           {weatherData && (
