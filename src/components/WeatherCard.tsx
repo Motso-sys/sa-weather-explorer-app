@@ -65,59 +65,59 @@ export const WeatherCard: React.FC<WeatherCardProps> = ({ data }) => {
 
   return (
     <Card className={`bg-gradient-to-br ${backgroundGradient} text-white border-none shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300`}>
-      <div className="p-6 relative">
+      <div className="p-4 sm:p-6 relative">
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-white transform translate-x-8 -translate-y-8"></div>
-          <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full bg-white transform -translate-x-4 translate-y-4"></div>
+          <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-white transform translate-x-4 sm:translate-x-8 -translate-y-4 sm:-translate-y-8"></div>
+          <div className="absolute bottom-0 left-0 w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-white transform -translate-x-2 sm:-translate-x-4 translate-y-2 sm:translate-y-4"></div>
         </div>
 
         <div className="relative z-10">
           {/* Header */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
             <div className="flex items-center space-x-2">
-              <MapPin className="h-5 w-5" />
-              <h2 className="text-2xl font-bold">{data.name}</h2>
+              <MapPin className="h-4 w-4 sm:h-5 sm:w-5" />
+              <h2 className="text-xl sm:text-2xl font-bold truncate">{data.name}</h2>
             </div>
-            <div className="text-5xl">
+            <div className="text-3xl sm:text-5xl">
               {getWeatherEmoji(weatherMain)}
             </div>
           </div>
 
           {/* Temperature */}
-          <div className="text-center mb-6">
-            <div className="text-5xl font-bold mb-2">
+          <div className="text-center mb-4 sm:mb-6">
+            <div className="text-4xl sm:text-5xl font-bold mb-1 sm:mb-2">
               {Math.round(data.main.temp)}°C
             </div>
-            <div className="text-lg capitalize opacity-90">
+            <div className="text-base sm:text-lg capitalize opacity-90">
               {data.weather[0]?.description || 'Clear sky'}
             </div>
           </div>
 
           {/* Weather details */}
-          <div className="grid grid-cols-3 gap-4 mt-6">
-            <div className="text-center bg-white/20 rounded-xl p-3 backdrop-blur-sm">
-              <Thermometer className="h-6 w-6 mx-auto mb-2" />
-              <div className="text-sm opacity-75">Feels like</div>
-              <div className="font-bold">{Math.round(data.main.temp)}°C</div>
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-4 sm:mt-6">
+            <div className="text-center bg-white/20 rounded-lg sm:rounded-xl p-2 sm:p-3 backdrop-blur-sm">
+              <Thermometer className="h-4 w-4 sm:h-6 sm:w-6 mx-auto mb-1 sm:mb-2" />
+              <div className="text-xs sm:text-sm opacity-75">Feels like</div>
+              <div className="font-bold text-sm sm:text-base">{Math.round(data.main.temp)}°C</div>
             </div>
             
-            <div className="text-center bg-white/20 rounded-xl p-3 backdrop-blur-sm">
-              <Droplets className="h-6 w-6 mx-auto mb-2" />
-              <div className="text-sm opacity-75">Humidity</div>
-              <div className="font-bold">{data.main.humidity}%</div>
+            <div className="text-center bg-white/20 rounded-lg sm:rounded-xl p-2 sm:p-3 backdrop-blur-sm">
+              <Droplets className="h-4 w-4 sm:h-6 sm:w-6 mx-auto mb-1 sm:mb-2" />
+              <div className="text-xs sm:text-sm opacity-75">Humidity</div>
+              <div className="font-bold text-sm sm:text-base">{data.main.humidity}%</div>
             </div>
             
-            <div className="text-center bg-white/20 rounded-xl p-3 backdrop-blur-sm">
-              <Wind className="h-6 w-6 mx-auto mb-2" />
-              <div className="text-sm opacity-75">Wind</div>
-              <div className="font-bold">{data.wind.speed} m/s</div>
+            <div className="text-center bg-white/20 rounded-lg sm:rounded-xl p-2 sm:p-3 backdrop-blur-sm">
+              <Wind className="h-4 w-4 sm:h-6 sm:w-6 mx-auto mb-1 sm:mb-2" />
+              <div className="text-xs sm:text-sm opacity-75">Wind</div>
+              <div className="font-bold text-sm sm:text-base">{data.wind.speed} m/s</div>
             </div>
           </div>
 
           {/* Weather condition badge */}
-          <div className="mt-6 text-center">
-            <span className="inline-block bg-white/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium">
+          <div className="mt-4 sm:mt-6 text-center">
+            <span className="inline-block bg-white/30 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium">
               {data.weather[0]?.main || 'Clear'}
             </span>
           </div>
