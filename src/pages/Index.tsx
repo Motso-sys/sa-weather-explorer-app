@@ -4,6 +4,7 @@ import { WeatherCard } from '../components/WeatherCard';
 import { CityInput } from '../components/CityInput';
 import { DateTime } from '../components/DateTime';
 import { useToast } from '../hooks/use-toast';
+import { fetchRealTimeWeather } from '../services/weatherService';
 
 const Index = () => {
   const [weatherData, setWeatherData] = useState(null);
@@ -22,31 +23,21 @@ const Index = () => {
 
     setLoading(true);
     
-    // Using a demo API key - in production, this should be in environment variables
-    const apiKey = "demo_key"; // Replace with actual API key
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)},ZA&appid=${apiKey}&units=metric`;
-
     try {
-      // For demo purposes, we'll simulate weather data since we don't have a real API key
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API delay
+      console.log(`Fetching real-time weather for: ${city}`);
+      const data = await fetchRealTimeWeather(city);
+      console.log('Weather data received:', data);
       
-      const mockData = {
-        name: city,
-        weather: [{ main: "Sunny", description: "clear sky", icon: "01d" }],
-        main: { temp: 24, humidity: 65 },
-        wind: { speed: 3.2 }
-      };
-      
-      setWeatherData(mockData);
+      setWeatherData(data);
       toast({
         title: "Weather fetched successfully!",
-        description: `Showing weather for ${city}`,
+        description: `Showing real-time weather for ${city}`,
       });
     } catch (error) {
       console.error('Weather fetch error:', error);
       toast({
         title: "Error fetching weather",
-        description: "City not found. Please try another South African city.",
+        description: "Unable to fetch weather data. Please try again later.",
         variant: "destructive",
       });
     } finally {
@@ -91,7 +82,7 @@ const Index = () => {
           {!weatherData && !loading && (
             <div className="bg-white/15 backdrop-blur-md rounded-2xl p-6 sm:p-8 text-center text-white shadow-xl border border-white/20">
               <div className="text-6xl sm:text-7xl mb-5 filter drop-shadow-lg">🌤️</div>
-              <p className="text-lg sm:text-xl font-semibold tracking-wide">Enter a city to see the weather</p>
+              <p className="text-lg sm:text-xl font-semibold tracking-wide">Enter a city to see real-time weather</p>
               <p className="text-sm sm:text-base opacity-80 mt-3 font-medium tracking-wide">
                 Try: Cape Town, Johannesburg, Durban, Pretoria
               </p>
@@ -101,7 +92,7 @@ const Index = () => {
 
         {/* Footer */}
         <div className="mt-8 sm:mt-12 text-center text-white/80 text-sm sm:text-base px-4">
-          <p className="font-medium tracking-wide">Discover the weather across the Rainbow Nation</p>
+          <p className="font-medium tracking-wide">Discover real-time weather across the Rainbow Nation</p>
         </div>
       </div>
     </div>
